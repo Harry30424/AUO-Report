@@ -1,0 +1,7 @@
+select *  from cvd_detaction where DATE_FORMAT(update_time,'%Y-%m-%d')  between CURRENT_TIMESTAMP -interval 7 day and CURRENT_TIMESTAMP 
+ 
+shot1_x,shot1_y,shot1_c,shot2_x,shot2_y,shot2_c,shot3_x,shot3_y,shot3_c,shot4_x,shot4_y,shot4_c,shot5_x,shot5_y,shot5_c,shot6_x,shot6_y,shot6_c
+
+SELECT array_olamp_recipe.tool_id,BM_EQP,update_time
+FROM array_olamp_recipe
+WHERE (array_olamp_recipe.shot1_x,shot1_y,shot1_c,shot2_x,shot2_y,shot2_c,shot3_x,shot3_y,shot3_c,shot4_x,shot4_y,shot4_c,shot5_x,shot5_y,shot5_c,shot6_x,shot6_y,shot6_c != array_olamp_insert

@@ -1,0 +1,29 @@
+﻿file=open('log.txt',mode='r',encoding='UTF-8')
+n=0
+words = file.read(1)
+while words:
+    bytes = ord(words)
+    n+=1
+    print('0x%02x,'%(bytes),end='')
+    if n%16==0:
+        print('')
+    words = file.read(1)
+print('\n\ntotal bytes: %d'%n)
+file.close()
+
+
+
+
+
+
+while True:
+    n+=1
+    print(n)
+    line = file.readline()
+    if not line:
+        break
+    else:
+        try:
+            line.decode('utf-8')
+        except:
+            print(str(line))

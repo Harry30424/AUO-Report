@@ -1,0 +1,116 @@
+﻿SELECT  array_olamp.*, 
+       array_olmap_config.*,
+       '' AS OOS, 
+       '' AS OOC 
+FROM   (SELECT Date_format(aoi_meas_time, '%Y-%m-%d %H:%i:%S') 
+                      AS 
+                      aoi_meas_time, 
+               Substring_index(chart_id, '/', 1) 
+                      AS chart, 
+               chart_id, 
+               sheet_id, 
+               meas_tool, 
+               Concat(Substring(process_tool, 1, Length(process_tool) - 1), '0') 
+                      AS tool_id, 
+              bm_eqp,
+               CASE 
+                 WHEN bm_eqp IS NOT NULL THEN unit 
+                 WHEN bm_eqp IS NULL 
+                      AND Substring(process_tool, Length(process_tool)) <> '0' 
+               THEN 
+                 process_tool 
+                 ELSE NULL 
+               END 
+                      AS unit, 
+               Date_format(eqp_process_time, '%Y-%m-%d %H:%i:%S') 
+                      AS eqp_process_time, 
+               actual_recipe, 
+               product_code 
+                      AS model, 
+               recipe_maskname, 
+               layer, 
+               Concat(Round(Timestampdiff(second, start_time, end_time) / 60, 1) 
+               , '') 
+                      AS diff, 
+               Concat(CASE 
+                        WHEN alignoffset_x_s1 IS NULL 
+                             AND alignoffset_x_s2 IS NOT NULL THEN 'na' 
+                        ELSE alignoffset_x_s1 
+                      END, '/', alignoffset_x_s2, '/', alignoffset_x_s3, '/', 
+               alignoffset_x_s4) 
+                       AS oft_x, 
+               Concat(alignoffset_y_s1, '/', alignoffset_y_s2, '/', 
+               alignoffset_y_s3, 
+               '/', 
+               alignoffset_y_s4) 
+                      AS oft_y, 
+               Concat(alignoffset_z_s1, '/', alignoffset_z_s2, '/', 
+               alignoffset_z_s3, 
+               '/', 
+               alignoffset_z_s4) 
+                      AS oft_t, 
+               psa, 
+               cp_r_temp_r, 
+               stage_r_temp1_r, 
+               stage_r_temp2_r, 
+               cp_l_temp_r, 
+               stage_l_temp1_r, 
+               stage_l_temp2_r, 
+               x, 
+               y, 
+               Date_format(cvd_logofftime, '%Y-%m-%d %H:%i:%s') 
+                      AS cvd_time, 
+               CASE 
+                 WHEN cvd_eqp <> '' THEN Concat(Replace(cvd_eqp, 'AD', ''), '_', 
+                                         cvd_chb) 
+                 ELSE '' 
+               END 
+                      AS cvd 
+        FROM   r2r.array_olamp 
+        WHERE  1 = 1 
+               AND aoi_meas_time >= '2020-07-18 00:00:00' 
+               AND aoi_meas_time <= '2020-07-21 23:59:59') array_olamp 
+       LEFT JOIN (SELECT x.chart_id, 
+                         x.point_count, 
+                         x.chip_point, 
+                         x.shot_point, 
+                         x.map_point, 
+                         x.x_offest, 
+                         x.y_offest, 
+                         x.stiching_point, 
+                         x.shot_count, 
+                         x.value_lsl  AS x_value_LSL, 
+                         x.value_lcl  AS x_value_LCL, 
+                         x.value_ucl  AS x_value_UCL, 
+                         x.value_usl  AS x_value_USL, 
+                         x.value_avg  AS x_value_avg, 
+                         x.stitch_lsl AS x_stitch_LSL, 
+                         x.stitch_lcl AS x_stitch_LCL, 
+                         x.stitch_ucl AS x_stitch_UCL, 
+                         x.stitch_usl AS x_stitch_USL, 
+                         x.stitch_avg AS x_stitch_avg, 
+                         x.delta_lsl  AS x_delta_LSL, 
+                         x.delta_lcl  AS x_delta_LCL, 
+                         x.delta_ucl  AS x_delta_UCL, 
+                         x.delta_usl  AS x_delta_USL, 
+                         x.delta_avg  AS x_delta_avg, 
+                         y.value_lsl  AS y_value_LSL, 
+                         y.value_lcl  AS y_value_LCL, 
+                         y.value_ucl  AS y_value_UCL, 
+                         y.value_usl  AS y_value_USL, 
+                         y.value_avg  AS y_value_avg, 
+                         y.stitch_lsl AS y_stitch_LSL, 
+                         y.stitch_lcl AS y_stitch_LCL, 
+                         y.stitch_ucl AS y_stitch_UCL, 
+                         y.stitch_ucl AS y_stitch_USL, 
+                         y.stitch_avg AS y_stitch_avg, 
+                         y.delta_lsl  AS y_delta_LSL, 
+                         y.delta_lcl  AS y_delta_LCL, 
+                         y.delta_ucl  AS y_delta_UCL, 
+                         y.delta_usl  AS y_delta_USL, 
+                         y.delta_avg  AS y_delta_avg 
+                  FROM   r2r.array_olmap_config  as x,
+                         r2r.array_olmap_config  as y 
+                  WHERE  Concat(x.chart_id, '_Y') = y.chart_id) array_olmap_config 
+              ON array_olamp.chart_id = array_olmap_config.chart_id 
+ORDER  BY aoi_meas_time DESC 

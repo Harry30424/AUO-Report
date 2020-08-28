@@ -1,0 +1,31 @@
+SELECT * FROM array_olamp_insert
+WHERE tool_id  NOT IN (SELECT tool_id FROM array_olamp_recipe WHERE tool_id = 'FFBALN10' AND DATE_FORMAT(update_time,'%Y-%m-%d')  between CURRENT_TIMESTAMP -interval 7 day and CURRENT_TIMESTAMP )
+
+
+
+SELECT 
+ (CASE 
+WHEN shot1_x != 0 then 'TRUE'
+WHEN shot1_y != 0 then '0'
+WHEN shot1_c != 0 then '0'
+WHEN shot2_x != 0 then '0'
+WHEN shot2_y != 0 then 'success'
+WHEN shot2_c !=0 then 'success'
+WHEN shot3_x !=0 then 'success'
+WHEN shot3_y !=0 then 'success'
+WHEN shot3_c !=0 then 'success'
+WHEN shot4_x !=0 then 'success'
+WHEN shot4_y !=0 then 'success'
+WHEN shot4_c !=0 then 'success'
+WHEN shot5_x !=0 then 'success'
+WHEN shot5_y !=0 then 'success'
+WHEN shot5_c !=0 then 'success'
+WHEN shot6_x !=0 then 'success'
+WHEN shot6_y !=0 then 'success'
+WHEN shot6_c !=0 then 'success'
+END 
+)AS root
+FROM array_olamp_insert;
+
+IF array_olamp_insert
+
