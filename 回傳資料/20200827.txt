@@ -1,0 +1,36 @@
+if (df.iat[0,8]) != "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot1_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot1_x = i.shot1_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,9] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot1_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot1_y = i.shot1_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,10] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot1_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot1_c = i.shot1_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,11] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot2_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot2_x = i.shot2_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,12] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot2_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot2_y = i.shot2_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,13] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot2_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot2_c = i.shot2_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,14] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot3_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot3_x = i.shot3_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,15] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot3_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot3_y = i.shot3_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,16] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot3_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot3_c = i.shot3_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,17] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot4_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot4_x = i.shot4_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,18] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot4_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot4_y = i.shot4_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,19] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot4_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot4_y = i.shot4_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,20] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot5_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot5_x = i.shot5_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,21] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot5_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot5_y = i.shot5_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,22] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot5_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot5_c = i.shot5_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,23] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot6_x FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot6_x = i.shot6_x WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,24] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot6_y FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot6_y = i.shot6_y WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
+elif (df.iat[0,25] )!= "0":
+    SQL_str = "update array_olamp_recipe as r,(SELECT shot6_c FROM array_olamp_insert WHERE tool_id = 'FFGALN10' AND BM_EQP = 'FFMALN10') as i set r.shot6_c = i.shot6_c WHERE ALN_Stage = '2470' AND tool_id = 'FFGALN10'"
