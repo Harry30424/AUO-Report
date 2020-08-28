@@ -1,0 +1,24 @@
+
+static String connString = "Database=l7b_olmap;Data Source=host_name;User Id=userid;Password=userpw;CharSet=utf8;SslMode=None;allowPublicKeyRetrieval=true";
+try
+{
+	conn.Open();
+	Console.WriteLine("已建立連線");
+}
+catch(Exception ex)
+{
+	lb_error.Text = ex.Message;
+}
+finally
+{
+	conn.Close();
+}
+'查詢條件固定'
+string sql = "select * from array_olamp";
+MysqlCommend cmd = new MysqlCommend(sql,conn);
+MysqlDataReader reader =cmd.ExecuteReader();
+while(reader.Read())
+{
+	Console.WriteLine(reader.GetInt32(userid)+reader.GetString("username")+reader.GetString("password"));
+}
+
